@@ -8,19 +8,19 @@ public class StringParserUDF extends UDF {
 
     private Text result = new Text();
 
-    public Text evaluate(Criteria criteria, String param) {
+    public Text evaluate(String criteria, String param) {
 
         if (criteria == null || param == null) {
             throw new IllegalArgumentException("Enter 2 parameters!");
         }
         switch (criteria) {
-            case OS:
+            case "os":
                 result.set(UserAgent.parseUserAgentString(param).getOperatingSystem().getName());
                 break;
-            case DEVICE:
+            case "device":
                 result.set(UserAgent.parseUserAgentString(param).getOperatingSystem().getDeviceType().getName());
                 break;
-            case BROWSER:
+            case "browser":
                 result.set(UserAgent.parseUserAgentString(param).getBrowser().getName());
                 break;
             default:
